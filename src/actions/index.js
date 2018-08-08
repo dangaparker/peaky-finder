@@ -1,7 +1,7 @@
 import axios from "axios";
 import types from "./types";
 import { objectToURLSearchParams } from "../utils/utility";
-
+//test
 export function setSearchTerm(searchTerm) {
 	return {
 		type: types.SET_LOCATION_SEARCH_TERM,
