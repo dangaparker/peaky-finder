@@ -25,6 +25,17 @@
 	height: 100%;
 }
 
+@media screen and (min-width: 750px) {
+	.filter-modal-shadow {
+		background-color: rgba(0,0,0,0.7);
+	}
+
+    .filter-modal-body {
+		width: 35%;
+		margin: auto;
+	}
+}
+
 .filter-modal-body h1,
 .filter-modal-body h2 {
 	margin: 0;

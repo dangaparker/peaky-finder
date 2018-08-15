@@ -23,7 +23,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "google-maps-react": "^2.0.2",
-    "mdbreact": "^4.5.1",
+    "mdbreact": "^4.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
