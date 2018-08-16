@@ -163,22 +163,27 @@
 	transition: transform .3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.card .down-arrow:hover{
+	cursor: pointer;
+}
+
 .top-left-text{
 	position: absolute;
 	top: 1em;
 	left: 1em;
-	background-color: #c6ccc6;
+	background-color: #f1f0ec;
 	border-radius: 10%;
-
 }
 .top-left-text p{
 	color: #70837f;
 }
+
+
 .top-right-x{
 	position: absolute;
 	top: 1em;
 	right: 1em;
-	background-color: #c6ccc6;
+	background-color: #f1f0ec;
 	border-radius: 10%;
 	width: 2em;
 	text-align: center;
@@ -187,6 +192,10 @@
 .top-right-x p{
 	color: #70837f
 }
+.top-right-x:hover{
+	cursor: pointer;
+}
+
 .itinerary-page{
 	display: flex;
     justify-content: space-evenly;
@@ -251,5 +260,8 @@
 
 .image-icon{
 	color:#70837f
+}
+.image-icon:hover{
+	cursor: pointer;
 }
 
