@@ -11,6 +11,8 @@ function locationReducer(state = DEFAULT_STATE, action) {
       return { ...state, locations: action.payload };
     case types.SET_SELECTED_LOCATION:
       return { ...state, selectedLocation: action.payload };
+    case types.CLEAR_LOCATION_DATA:
+      return { ...state, locations: action.payload };
     default:
       return state;
   }

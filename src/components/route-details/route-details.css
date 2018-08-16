@@ -1,17 +1,20 @@
 
 .thumbnail {
-	height: 35vh;
 	background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
 		url("../../assets/images/mountain_bg.jpg");
 	background-size: cover;
 	background-position: center;
-
+	margin-top: 3.2em;
 	display: flex;
 	color: white;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: center;
+	height: 35vh;
+	margin-top: 3.2em;
 }
+
+
 
 .title,
 .subtitle,
@@ -47,6 +50,10 @@
 	margin-top: 0.5em;
 }
 
+.detail-container{
+	height: 100vh;
+}
+
 .description {
 	margin: 1em auto 2em auto;
 }
@@ -70,4 +77,54 @@
 .bar div p:first-child {
 	font-size: 1em;
 	font-weight: bold;
+}
+
+ .bottom-btn{
+	background-color: #e0e7e0;
+	margin-top: 5%;
+	text-align: center;
+}
+.add-itinerary-button, .go-to-itinerary-button{
+	background-color: #e0e7e0;
+	color: #70837f;
+	cursor: pointer
+}
+.add-itinerary-button:hover, .go-to-itinerary-button:hover{
+	background-color: rgb(201, 212, 201);
+}
+.description{
+	text-align: center
+}
+@media only screen and (min-width: 576px){
+	.go-to-itinerary-button, .add-itinerary-button{
+		width: 60%;
+		
+}
+	.btn-group{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+@media only screen and (min-width: 576px){
+	.detail-container{
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	.detail-container{
+		padding-left: 4em;
+		padding-right: 4em;
+	}
+}
+
+@media only screen and (min-width: 992px){
+	.detail-container{
+		padding-left: 6em;
+		padding-right: 6em;
+	}
+	
 }

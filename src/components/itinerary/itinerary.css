@@ -3,18 +3,18 @@
 	justify-content: center;
 	text-transform: lowercase;
 	font-weight: lighter;
-	color: black;
+	color: #70837f;
 }
 
 .cards {
 	width: 100%;
 	padding: 0.5em;
 	box-sizing: border-box;
-
 	display: flex;
 	flex-flow: column wrap;
 	justify-content: center;
 	align-items: center;
+	color: #70837f
 }
 
 .card {
@@ -22,6 +22,48 @@
 	width: 100%;
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 	margin-bottom: 1em;
+}
+
+@media only screen and (max-width: 576px){
+	.main-form-container{
+		width: 56%;
+	}
+}
+
+@media only screen and (min-width: 576px){
+	.card {
+		width: 80%;
+	}
+	.itinerary-button{
+		width: 100%;
+	}
+	.main-form-container{
+		width: 56%;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	.card{
+		width: 60%;
+	}
+	.itinerary-button{
+		width: 100%;
+	}
+	.main-form-container{
+		width: 36%;
+	}
+}
+
+@media only screen and (min-width: 992px){
+	.card{
+		width: 45%;
+	}
+	.itinerary-button{
+		width: 100%;
+	}
+	.main-form-container{
+		width: 36%;
+	}
 }
 
 .card.expand {
@@ -87,7 +129,6 @@
 }
 
 .card.expand .card-details {
-	overflow: scroll;
 	transition:max-height .5s ease-out;
 	max-height: 400px;
 	height: auto;
@@ -122,50 +163,70 @@
 	transition: transform .3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.card .down-arrow:hover{
+	cursor: pointer;
+}
+
 .top-left-text{
 	position: absolute;
 	top: 1em;
 	left: 1em;
-	background-color: #9BA8B2;
-	color: white;
+	background-color: #f1f0ec;
 	border-radius: 10%;
-
 }
+.top-left-text p{
+	color: #70837f;
+}
+
 
 .top-right-x{
 	position: absolute;
 	top: 1em;
 	right: 1em;
-	background-color: #9BA8B2;
-	color: white;
+	background-color: #f1f0ec;
 	border-radius: 10%;
 	width: 2em;
 	text-align: center;
-
 }
+
+.top-right-x p{
+	color: #70837f
+}
+.top-right-x:hover{
+	cursor: pointer;
+}
+
 .itinerary-page{
 	display: flex;
     justify-content: space-evenly;
     align-items: center;
-	flex-direction: column;
+	flex-flow: row wrap;
+	height: 100vh;
 	text-transform: lowercase;
+	margin-top: 3.2em;
 }
 
 .itinerary-input{
 	font-size: 1.3em;
     width: 100%;
     background-color: #dddada;
-    color: black;
+    color: #70837f;
     padding: .5em;
 	font-weight: 300;
 	border: black 1px solid;
 	box-sizing: border-box;
 	margin: .5em 0;
+	text-align: center;
 
 }
 
 .itinerary-button{
 	text-transform: lowercase;
+	color: #70837f;
+	font-size: 1.3em;
+	width: 100%;
+	background-color: #e0e7e0;
+	
 }
 
 .itinerary-label{
@@ -180,4 +241,27 @@
 	text-transform: lowercase
 }
 
-/* Test comment */
+.hide-itinerary{
+	display: none;
+}
+
+.email-sent-msg{
+	text-align: center;
+	color: green;
+}
+
+.main-form-container {
+	padding: 0 2em;
+	display: flex;
+	justify-content: center;
+	flex-flow: column nowrap;
+	
+}
+
+.image-icon{
+	color:#70837f
+}
+.image-icon:hover{
+	cursor: pointer;
+}
+

@@ -17,13 +17,23 @@
 
 .filter-modal-body {
 	box-sizing: border-box;
-	background-color: #fff;
-	color: black;
+	background-color: #f2f0ec;
+	color: #70837f;
 	padding: 0.5em 1em;
 	display: flex;
 	flex-flow: column nowrap;
-	justify-content: space-evenly;
 	height: 100%;
+}
+
+@media screen and (min-width: 750px) {
+	.filter-modal-shadow {
+		background-color: rgba(0,0,0,0.7);
+	}
+
+    .filter-modal-body {
+		width: 35%;
+		margin: auto;
+	}
 }
 
 .filter-modal-body h1,
@@ -37,10 +47,19 @@
 }
 
 .filter-modal-header {
+	height: 3em;
 	display: flex;
+	flex-flow: row wrap;
 	justify-content: space-between;
-	border-bottom: 1px solid #9ba8b2;
-	padding-bottom: 1em;
+	align-items: center;
+	border-bottom: 1px solid black;
+}
+
+.filter-form {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-evenly;
+	height: 100%;
 }
 
 .categories {
@@ -58,6 +77,10 @@
 input[type="checkbox"] {
 	width: 2em;
 	height: 2em;
+	color: #70837f
+}
+input[type="checkbox"]:hover{
+	cursor: pointer
 }
 
 .drop-menu {
@@ -65,6 +88,7 @@ input[type="checkbox"] {
 	justify-content: space-between;
 	flex-direction: row;
 	align-items: center;
+	color: #70837f
 }
 
 .drop-menu-style {
@@ -86,4 +110,10 @@ input[type="checkbox"] {
 
 .input-checkbox {
 	margin-top: 0;
+	color: #70837f
 }
+
+.drop-menu-style:hover{
+	cursor: pointer;
+}
+

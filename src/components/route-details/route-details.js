@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { getSelectedRoute, addRouteToItinerary, removeRouteFromItinerary } from "../../actions";
+import {
+	getSelectedRoute,
+	addRouteToItinerary,
+	removeRouteFromItinerary,
+	getItenaryRoutes
+} from "../../actions";
 import ReactStars from "react-stars";
 import queryString from "query-string";
 import "./route-details.css";
@@ -10,10 +15,6 @@ class RouteDetails extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			routeDetailInfo: {},
-			isAdded: false
-		};
 		this.handleClick = this.handleClick.bind(this);
 	}
 
@@ -22,23 +23,17 @@ class RouteDetails extends Component {
 	}
 
 	handleClick() {
-		const { isAdded } = this.state;
-
-		if (isAdded) {
-			this.props.removeFromItinerary(this.props.selectedRoute);
-		} else {
+		//create a cookie or local storage here.
+		const { itineraryRoutes, selectedRoute } = this.props;
+		if (itineraryRoutes.find(route => route.id === selectedRoute.id) == null) {
 			this.props.addToItinerary(this.props.selectedRoute);
+		} else {
+			this.props.removeFromItinerary(this.props.selectedRoute);
 		}
-
-		this.setState({
-			isAdded: !isAdded
-		});
 	}
 
 	render() {
-		var a = this.props.itineraryRoutes.map(route => route.id);
-		console.log(a);
-		const { isAdded } = this.state;
+
 		let content;
 		if (this.props.selectedRoute) {
 			const {
@@ -79,13 +74,13 @@ class RouteDetails extends Component {
 						<p className="description">{description}</p>
 						<div className="btn-group">
 							<button
-								className="btn is-primary is-text-ligther itinerary-toggle"
+								className="btn is-primary is-text-ligther itinerary-toggle add-itinerary-button top-btn"
 								onClick={this.handleClick}
 							>
-								{isAdded ? "remove from itinerary" : "add to itinerary"}
+								{this.props.itineraryRoutes.find(route => route.id === this.props.selectedRoute.id) == null ? "add to itinerary" : "remove from itinerary"}
 							</button>
 							<NavLink
-								className="btn is-secondary  is-text-ligther"
+								className="btn bottom-btn go-to-itinerary-button"
 								to={`/itinerary?${queryString.stringify({
 									routes: this.props.itineraryRoutes.map(route => route.id)
 								})}`}

@@ -35,6 +35,7 @@ class RouteModal extends Component {
 	}
 
 	render() {
+		console.log('Props dfa', this.props)
 		if (!this.state.loading) {
 			return (
 				<div
@@ -53,9 +54,9 @@ class RouteModal extends Component {
 							return (
 								<li key={i}>
 									<NavLink to={`/route-details/${route.id}`}>
-										<p>{route.name}</p>
-										<p>{route.type}</p>
-										<p>{route.difficulty}</p>
+										<p className="route-name">{route.name}</p>
+										<p className="route-type">{route.type}</p>
+										<p className="route-difficulty">{route.difficulty}</p>
 									</NavLink>
 								</li>
 							);

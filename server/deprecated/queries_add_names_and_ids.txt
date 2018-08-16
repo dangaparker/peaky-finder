@@ -1,5 +1,0 @@
-INSERT INTO `locations` (`name`) SELECT `location_mountain` FROM `routes` GROUP BY `location_mountain`
-
-UPDATE `routes`
-JOIN `locations` ON `routes`.`location_mountain` = `locations`.`name`
-SET `routes`.`locationID` = `locations`.`ID`,

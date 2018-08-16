@@ -1,16 +1,15 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "root", "mountainproject");
-ini_set('max_execution_time', 1500);
+$conn = mysqli_connect("localhost", "root", "root", "peaky");
+ini_set('max_execution_time', 15000);
 $output = [
 	'success'=> false,
-	'errors'=>[]
 ];
 
 $routedescriptionquery = "SELECT `id`, `routeURL`, `name` FROM `routes` WHERE `hasdescription`=0";
 $routedescriptionresult = mysqli_query($conn, $routedescriptionquery);
 
 if (empty($routedescriptionresult)) {
-	$output['errors'][] = 'database error';
+	$output['errors'][] = 'database error - routedescription';
 } else {
 	if ($routedescriptionresult) {
 		$output['success'] = true;
@@ -18,7 +17,7 @@ if (empty($routedescriptionresult)) {
         while( $row = mysqli_fetch_assoc($routedescriptionresult)){
             $id = $row['id'];
             $descriptionURL = $row['routeURL'];
-
+            
             $handler = curl_init();
             curl_setopt($handler, CURLOPT_URL, "$descriptionURL");
             curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
@@ -28,7 +27,7 @@ if (empty($routedescriptionresult)) {
 
             $page = curl_exec($handler);
             $start = strpos($page, 'fr-view');
-            $testArea = substr($page, $start, 500);
+            $testArea = substr($page, $start, 2500);
             $start = strpos($testArea, 'fr-view');
             $end = strpos($testArea, '</div>', $start);
             $description = substr($testArea, $start+9, $end-$start-9);
@@ -47,10 +46,11 @@ if (empty($routedescriptionresult)) {
             $descripresult = mysqli_query($conn, $descripquery);
 
             };
-	    } else {
-		    $output['errors'][] = 'no data';
-	    };
-    };
+	} else {
+		$output['errors'] = 'no data  - routedescription';
+	};
+};
+$outputJSON = json_encode($output);
 print_r($output['data']);
 
 ?>

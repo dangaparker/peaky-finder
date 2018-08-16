@@ -23,7 +23,7 @@
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "google-maps-react": "^2.0.2",
-    "mdbreact": "^4.5.1",
+    "mdbreact": "^4.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
@@ -34,6 +34,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "autoprefixer": "^9.0.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-syntax-async-functions": "^6.13.0",
@@ -44,7 +45,7 @@
     "eslint": "^4.19.1",
     "file-loader": "^1.1.11",
     "image-webpack-loader": "^4.3.0",
-    "postcss-loader": "^2.1.5",
+    "postcss-loader": "^2.1.6",
     "react-hot-loader": "^4.3.0",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",

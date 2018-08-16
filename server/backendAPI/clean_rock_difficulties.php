@@ -144,7 +144,7 @@ for ( $i=0; $i<count($ids_and_diffs); $i++){
     $ids_and_diffs[$i]['difficulty'] = floatval($ids_and_diffs[$i]['difficulty']);
 }
 
-//Inserts the cleaned difficuly strings into the table 
+//Inserts the cleaned difficuly strings into the database 
 for ( $i=0; $i<count($ids_and_diffs); $i++){
     $id = $ids_and_diffs[$i]['id'];
     $diff = $ids_and_diffs[$i]['difficulty'];

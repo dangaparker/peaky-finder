@@ -2,14 +2,14 @@
 	position: fixed;
 	top: 20%;
 	left: 0;
-	height: 100vh;
+	height: 80%;
 	width: 100vw;
-	background-color: rgba(255, 255, 255, 0.95);
-	border-top: 1px solid #78a9d1;
+	background-color:#f1f0ec;
+	border-top: 1px solid #96a2a0;
 	box-sizing: border-box;
 	overflow-y: scroll;
 	transform-origin: 0 0;
-	transform: translate(0%, 70%);
+	transform: translate(0%, 85%);
 	transition: transform 0.2s ease-in;
 }
 
@@ -27,12 +27,25 @@
 	font-size: 2em;
 	margin: 0.2em 1em;
 	padding: .2em 0em 0em 0em;
+	color: #70837f
 }
 
-.routes-modal > p {
-	text-align: right;
+.routes-modal li p {
 	margin-right: 1em;
 }
+
+.route-name{
+	width: 50%;
+}
+
+.route-type{
+	width: 10%;
+}
+
+.route-difficulty{
+	width: 10%;
+}
+
 
 .routes-modal ul {
 	display: flex;
@@ -41,12 +54,19 @@
 	margin: 0;
 }
 
+.routes-modal:hover {
+	cursor: pointer;
+}
+
 .routes-modal ul li {
-	border-bottom: 1px solid rgba(43, 41, 41, 0.3);
+	border-bottom: 1px solid rgba(184, 184, 184, 0.3);
 	box-sizing: border-box;
 	margin: 0.1em 0;
 	padding: .7em 0em;
 	font-size: 1.2em;
+}
+.routes-modal ul li:hover{
+	background-color: rgba(139, 139, 139, 0.11);
 }
 
 .routes-modal ul li:last-child {

@@ -2,7 +2,6 @@
 
 $place = $_GET['data'];
 $place = str_replace(' ','', $place);
-
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -19,13 +18,25 @@ curl_setopt_array($curl, array(
 
 $response = curl_exec($curl);
 $err = curl_error($curl);
-
 curl_close($curl);
 
 if ($err) {
     echo "cURL Error #:" . $err;
 } else {
     $response = json_decode($response);
+    $status = $response -> status;
+    if($status === 'ZERO_RESULTS') {
+        $output['error']="zero_results";
+        $jsonoutput = json_encode($output);
+        print_r($jsonoutput);
+        exit;
+    } else if ($status === 'INVALID_REQUEST') {
+        $output['error']="invalid_request";
+        $jsonoutput = json_encode($output);
+        print_r($jsonoutput);
+        exit;
+    };
+    
     $lat = $response->candidates[0]->geometry->location->lat;
     $lon = $response->candidates[0]->geometry->location->lng;
 };

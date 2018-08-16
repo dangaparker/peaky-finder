@@ -30,6 +30,7 @@ for($i = 0; $i < count($longitude); $i++) {
     $result2 = mysqli_query($conn, $insertQuery);
 };
 
+include_once "offset_overlapping_markers.php";
 include_once "clean_boulder_difficulties.php";
 include_once "clean_rock_difficulties.php";
 include_once "type_abbrev.php";

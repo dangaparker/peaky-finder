@@ -7,24 +7,67 @@ import { Field, reduxForm } from "redux-form";
 import Card from "./card";
 import Loading from "../loading";
 import queryString from "query-string";
+import NoResults from '../results/no-results-modal';
+import info from '../../assets/images/icons/info.svg'
 
 class Itinerary extends Component {
 	constructor(props) {
 		super(props);
-
+		//create a state that will take routes from route-details.js Stored cookie or local storage
+		// use this state to render card.js instead of the props. 
+		//make sure to always updatede the Cookie or local storage every time user changes the location.
 		this.state = {
 			itineraryItems: {},
-			loading: false
+			loading: false,
+			emailSent: false,
+			iconClick: false
+			
 		};
+
+		this.renderInput = this.renderInput.bind(this);
+		this.removeEmailSentWhenFormAlreadySubmits = this.removeEmailSentWhenFormAlreadySubmits.bind(this);
+		this.handleIconClick = this.handleIconClick.bind(this)
 	}
 
+	buildEmailCard() {
+		const mapImage = function (item) {
+			return (`
+			<div class ="card">	
+				<img src="${item.image}"/>              
+			<div class="card-content">
+				<div>${item.name}</div>
+				<div>${item.location}</div>
+				<div>${item.difficulty}</div>
+				<div>${item.description}</div>
+			</div>
+		</div>`)
+		}
+		return this.props.routes.map(mapImage);
+
+	}
+	
 	async handleAddItem(values) {
 		// await this.props.sendTodoItem(values)
 		// this.props.history.push('/');
 	}
 
+	handleIconClick(){
+		this.setState({
+			iconClick: !this.state.iconClick
+		})
+	}
+
 	handleClick = async e => {
+		console.log('email props', this.props)
 		e.preventDefault();
+		if (!this.props.valid) {
+			return;
+		}
+
+		this.setState({
+			emailSent: true
+		})
+
 
 		var params = new URLSearchParams();
 		params.append("email", this.props.emailInput.values.email);
@@ -58,60 +101,68 @@ class Itinerary extends Component {
       }  
       
       .card {
-          height: 16em;
-          width: 100%;
+          height: auto;
+          width: auto;
           box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-          margin-bottom: 1em;
-        }
+					margin-bottom: 1em;
+					padding: .5em;
+					display: flex;
+					box-sizing: border-box;
+					align-items: center
+				}
 
       .card img{
-        height: 50%;
+        height: 14em;
         background-position: center;
         background-size: cover;
         position: relative;
-        display: flex;
+				display: flex;
+				margin-right: .5em;
       }
 
       .card-content {
+				height: auto
         padding: .8em;
         align-items: center;
         box-sizing: border-box;
-        font-family: "Quicksand", sans-serif;
-      }
+				font-family: "Quicksand", sans-serif;
+				display: flex;
+				flex-flow: column wrap;
+			}
+			
+			@media only screen and (max-width: 600px){
+				.card {
+				 display: flex;
+				 flex-flow: column wrap;
+				 justify-content: center;
+				}
+
+				.card img { 
+					width: 18em;
+					height: auto;
+					text-align: center;
+					display: block;
+					background-size: contain;
+				}
+			}
+
+			.card-content div{
+				padding-top: .3em;
+			}
+			.header-text{
+				text-align: center;
+			}
       </style>
     <body>  
-      <h1>Thank you for using Peaky Finder, here's your itinerary! Enjoy your climb, by order of the Peaky Finders!</h1>
+      <h1 class="header-text">Here is your itinerary! Enjoy your trip to ${this.props.routes[0].location}, by order of the Peaky Finders!</h1>
       <div class="cards">
-        <div class="card">
-
-          <img src=${this.props.routes[0].image}>
-            
-              <div class='card-content'>
-                  <div>${this.props.routes[0].name}</div>
-                  <div>${this.props.routes[0].location}</div>
-                  <div>${this.props.routes[0].difficulty}</div>
-                  <div>${this.props.routes[0].description}</div>
-              </div>
-        
-        </div>
-        <div class="card">
-          <img src=${this.props.routes[1].image}>
-              
-            <div class='card-content'>
-              <div>${this.props.routes[1].name}</div>
-              <div>${this.props.routes[1].location}</div>
-              <div>${this.props.routes[1].difficulty}</div>
-              <div>${this.props.routes[1].description}</div> 
-            </div>
-       </div>   
-      </div> 
-
-
-
+			${this.buildEmailCard()}
+			</div>
     </body>
     </html>`
 		);
 		await axios.post("/api/mail_handler.php", params);
+
 	};
 
 	componentDidMount() {
@@ -122,17 +173,49 @@ class Itinerary extends Component {
 	}
 
 	renderInput({ label, input, meta: { touched, error } }) {
+		// debugger;
+		this.removeEmailSentWhenFormAlreadySubmits();
 		return (
 			<div className="form-component">
 				<label className="itinerary-label">{label}</label>
-				<input className="itinerary-input" {...input} type="text" autoComplete="off" />
+				<input className="itinerary-input" {...input} type="text" autoComplete="off" placeholder='email address' />
 				<p className="error-text">{touched && error}</p>
 			</div>
 		);
 	}
 
+	removeEmailSentWhenFormAlreadySubmits() {
+		const { emailSent } = this.state;
+
+		if (emailSent) {
+			this.setState({
+				emailSent: !emailSent
+			});
+		}
+	}
+
+
+	// emailSentMsg(){
+	// 	if(this.state.emailSent){
+	// 		 return (
+	// 			 <p className="email-sent-msg">email sent</p>
+	// 		 )
+	// 	}
+	// 	return
+	// }
+
+
 	render() {
 		const { handleSubmit } = this.props;
+
+		if (!this.props.routes.length) {
+			return (
+				<NoResults text="no itinerary yet" />
+			)
+		}
+
+		const { emailSent } = this.state;
+
 
 		if (!this.state.loading) {
 			return (
@@ -143,18 +226,25 @@ class Itinerary extends Component {
 					<section className="cards">
 						{this.props.routes.map((route, index) => <Card key={index} route={route} />)}
 					</section>
-					<div>
+
+					<div className={this.props.routes.length ? 'main-form-container' : "hide-itinerary"}>
+
+						<div className='info-container' onClick={this.handleIconClick} >
+							<img className='image-icon' src={info} />
+							<p className={this.state.iconClick ? '' : 'hide'}>Send yourself your itinerary in case you lose service in the mountains</p>
+						</div>
+
 						<form onSubmit={this.handleClick}>
 							<div>
 								<Field
 									name="email"
 									type="email"
 									component={this.renderInput}
-									label="Email Address: "
-									placeholder="Email Address"
 								/>
 							</div>
-							<button type="submit" className="itinerary-button btn is-primary is-fullwidth">
+							{/* {this.emai`lSentMsg()} */}
+							{emailSent ? <p className="email-sent-msg">email sent</p> : null}
+							<button type="submit" className="itinerary-button btn is-primary is-small">
 								Send My intinerary
 							</button>
 						</form>
@@ -189,6 +279,10 @@ function validate(values) {
 
 	if (!email) {
 		errors.email = "Please add your email address";
+	}
+	var result = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+	if (!result) {
+		errors.email = 'Invalid email address';
 	}
 	return errors;
 }

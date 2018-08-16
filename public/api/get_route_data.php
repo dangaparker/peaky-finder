@@ -1,7 +1,11 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-$locationID = $_GET['data'];
+$routeIDs = $_GET['routeIDs'];
+$locationID = json_decode($_GET['locationID']);
 
+if($routeIDs == 'null'){
+    $routeIDs = null;
+}
 
 require 'mysql_connect.php';
 
@@ -11,10 +15,15 @@ $output = [
     "error" => []
 ];
 
+if (isset($routeIDs)){
+    $query = "SELECT `id`, `name`, `type_abbrev` AS 'type', `difficulty` FROM `routes` WHERE `id` IN ({$routeIDs})";
+} elseif (isset($locationID)){
+    $query = "SELECT `id`, `name`, `type_abbrev` AS 'type', `difficulty` FROM `routes` WHERE `locationID` = $locationID";
+} else {
+    $output['error'][] = 'No data passed in.';
+}
 
-$query = "SELECT `id`, `name`, `type_abbrev` AS 'type', `difficulty` FROM `routes` WHERE `locationID` = {$locationID}";
 $result = mysqli_query($conn, $query);
-
 
 if(empty($result)) {
     $output['data'][] = 'Database Error';

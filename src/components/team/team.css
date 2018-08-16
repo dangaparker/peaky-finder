@@ -1,12 +1,21 @@
+.team-page-container {
+    background-color: #f1f0ec;
+    padding: 3em 1em;
+}
+
 .team {
     display: flex;
     flex-flow: row wrap;
+    text-align: center;
+    justify-content: space-evenly;
 }
 
 .team-title{
     text-align: center;
-    text-transform: lowercase
-    
+    text-transform: lowercase;
+    color: #70837f;
+    margin: 1.4em 0;
+    font-size: 1.9em;
 }
 
 .member {
@@ -16,15 +25,58 @@
 }
 
 .member>img {
-    width: 100%;
+    width: 90%;
+    border-radius: 50%;
+    filter: drop-shadow(2px 2px 1px #b0b0b0);
 }
 
 
+
 .member>p img {
-    width: 2em;
     padding: .3em;
 }
 
 .member h2, h3, p{
     margin: .3em;
+    color: #70837f;
+}
+
+@media only screen and (min-width: 800px){
+	.team{
+        display: flex;
+        flex-flow: row; 
+        padding: .4em;
+    }
+    .shout-out-text{
+        width: 50%;
+
+    }
+}
+@media only screen and (min-width: 475px) and (max-width: 670px){
+    .team{
+        padding: 0 4em
+    }
+}
+@media only screen and (min-width: 670px) and (max-width: 800px){
+    .team{
+        padding: 0 8em; 
+    }
+    .shout-out-text{
+        width: 50%;
+
+    }
+}
+
+.shout-out-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.linkedin-git-icon{
+    width: 1.6em
+}
+.folder-icon{
+    width: 2em;
 }

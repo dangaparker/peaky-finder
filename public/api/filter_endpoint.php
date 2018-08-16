@@ -119,10 +119,13 @@ else if (preg_match('/[0-9]{1,2}d/', $rockDiffMax)){
 }
 $difficultyString = '';
 if($traditional|$topRope|$sport){
-    $difficultyString = $difficultyString . "AND `routes`.`rock_difficulty` BETWEEN {$rockDiffMin} AND {$rockDiffMax} ";
+    $difficultyString = $difficultyString . "`routes`.`rock_difficulty` BETWEEN {$rockDiffMin} AND {$rockDiffMax} ";
 }
 if($boulder){
-    $difficultyString = $difficultyString . "AND `routes`.`boulder_difficulty` BETWEEN '{$boulderDiffMin}' AND '{$boulderDiffMax}'";
+    $difficultyString = $difficultyString . "OR `routes`.`boulder_difficulty` BETWEEN '{$boulderDiffMin}' AND '{$boulderDiffMax}'";
+}
+if($boulder && !$traditional && !$topRope && !$sport){
+    $difficultyString = "`routes`.`boulder_difficulty` BETWEEN '{$boulderDiffMin}' AND '{$boulderDiffMax}'";
 }
 //AND `routes`.`rock_difficulty` BETWEEN {$rockDiffMin} AND {$rockDiffMax}
 //AND `routes`.`boulder_difficulty` BETWEEN '{$boulderDiffMin}' AND '{$boulderDiffMax}'
@@ -131,14 +134,12 @@ $query = "SELECT `locations`.`ID` AS 'Location ID',
 `locations`.`name`, 
 `locations`.`avgLat`, 
 `locations`.`avgLong`, 
-COUNT(`routes`.`locationID`) AS 'Total Number of Routes With Filter', 
 `routes`.`id` AS 'Route IDs',
-`avgLat`, `avgLong`, `numRoutes`, SQRT( POW(69.1 * (`avgLat` - {$mapCenterLat}), 2) + POW(69.1 * ({$mapCenterLong} - `avgLong`) * COS(`avgLat` / 57.3), 2)) AS distance
+`avgLat`, `avgLong`, SQRT( POW(69.1 * (`avgLat` - {$mapCenterLat}), 2) + POW(69.1 * ({$mapCenterLong} - `avgLong`) * COS(`avgLat` / 57.3), 2)) AS distance
     FROM `locations`
     JOIN `routes` ON `locations`.`ID` = `routes`.`locationID`
     WHERE LOWER(`type`) REGEXP '{$regexString}'
-    {$difficultyString}
-    GROUP BY `routes`.`ID`
+    AND ({$difficultyString})
 HAVING distance < {$radius}";
 
 // print($query);
@@ -147,24 +148,26 @@ HAVING distance < {$radius}";
 $result = mysqli_query($conn, $query);
 
 if(empty($result)) {
-    $output['error'] = 'Database Error';
+    $output['error'] = mysqli_error($conn);
 } else {
     if(mysqli_num_rows($result) > 0) {
         while($row = mysqli_fetch_assoc($result)) {
             $areaID = $row['Location ID'];
             if(isset($output['data'][$areaID])) {
                 $output['data'][$areaID]['Route IDs'] .= ',' . $row['Route IDs'];
-                $output['data'][$areaID]['Total Number of Routes With Filter'] += 1;
+                $output['data'][$areaID]['numRoutes'] += 1;
             } else {
                 $output['data'][$areaID] = [
                     'name' => $row['name'],
                     'avgLat' => $row['avgLat'],
                     'avgLong' => $row['avgLong'],
-                    'Total Number of Routes With Filter' => $row['Total Number of Routes With Filter'],
-                    'Route IDs' => $row['Route IDs']
+                    'numRoutes' => 1,
+                    'Route IDs' => $row['Route IDs'],
+                    'ID' => $areaID
                 ];
             }
         }
+        $output['success'] = true;
     } else {
         $output['error'] = 'No Data';
     }

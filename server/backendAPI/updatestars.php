@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "root", "mountainproject");
+$conn = mysqli_connect("localhost", "root", "root", "peaky");
 
 $query = "SELECT `id` FROM `routes`";
 $result = mysqli_query($conn, $query);

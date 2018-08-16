@@ -1,18 +1,19 @@
 body {
 	margin: 0;
-	width: 100vw;
 	height: 100vh;
 	font-family: "filson";
 	padding: 0;
+	background-color: #f1f0ec;
 }
 
-@font-face{
+@font-face {
 	font-family: filson;
 	src: url(../assets/fonts/Filson-Soft-Light-Webfont/Webfonts/filsonsoft_light_macroman/filsonsoft-light-webfont.woff);
 }
 
 a {
 	text-decoration: none;
+	color: #70837f;
 }
 
 ul {
@@ -24,18 +25,22 @@ ul {
 }
 
 .colors {
-	color: #78a9d1;
-	color: #dff1ff;
-	color: #9ba8b2;
-	color: #a79d8d;
-	color: #ffebcc;
+	color: #f1f0ec;
+	color: #e0e7e0;
+	color: #b0b0b0;
+	color: #96a2a0;
+	color: #8a908c;
+	color: #70837f;
+}
+input:focus {
+	outline: none;
 }
 
 .input {
 	font-size: 1.3em;
 	width: 80%;
 	background-color: white;
-	color: black;
+	color: #70837f;
 	padding: 0.5em;
 	font-weight: 300;
 }
@@ -47,6 +52,7 @@ ul {
 	outline: none;
 	border: none;
 	font-family: filson;
+	box-shadow: 0 1px 1px rgba(128, 128, 128, 0.466);
 }
 
 .btn.is-small {
@@ -58,20 +64,31 @@ ul {
 }
 
 .btn.is-primary {
-	
-	color: black;
+	color: #70837f;
+}
+.btn.is-primary:hover {
+	background-color: rgb(201, 212, 201);;
+	cursor: pointer;
 }
 
 .btn.is-secondary {
 	background-color: #e0e7e0;
-	color: black;
+	color: #70837f;
 	text-align: center;
+}
+.btn.is-secondary:hover{
+	background-color: rgb(201, 212, 201);;
+	cursor: pointer;
 }
 
 .btn-group {
 	display: flex;
 	justify-content: center;
 	flex-flow: column nowrap;
+}
+
+.is-bg-grey {
+	background-color: #dddddd;
 }
 
 .btn-group.is-horizontal {
@@ -100,7 +117,7 @@ ul {
 	color: #e8ffe5;
 }
 
-.is-text-darker{
+.is-text-darker {
 	color: #70837e;
 }
 
@@ -115,4 +132,5 @@ Photo by Daniel Leone on Unsplash */
 	text-align: center;
 }
 
-/*test comment */
+/*Photo by Brook Anderson on Unsplash*/
+

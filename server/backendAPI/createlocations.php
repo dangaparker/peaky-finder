@@ -13,8 +13,6 @@ $row = mysqli_fetch_assoc($locminmaxresult);
 $min = $row['MIN(ID)'];
 $max = $row['MAX(ID)'];
 
-$output['errors']=[];
-
 for ($locCount = $min; $locCount <= $max; ++$locCount) {
     $loccountbuildquery = "SELECT COUNT(*) FROM `routes` WHERE locationID = $locCount";
     $loccountbuildresult = mysqli_query($conn, $loccountbuildquery);
@@ -26,7 +24,7 @@ for ($locCount = $min; $locCount <= $max; ++$locCount) {
     $result = mysqli_query($conn, $query);
 
     if (empty($result)) {
-        $output['errors'][] = 'database error';
+        $output['errors'][] = 'database error - createlocations';
     } else {
         if (mysqli_affected_rows($conn) > 0 ) {
             $output['success'] = true;
@@ -36,12 +34,9 @@ for ($locCount = $min; $locCount <= $max; ++$locCount) {
                 print_r("In progress");
             };
         } else {
-            $output['errors'][] = 'no data';
+            $output['errors'][] = 'no data  - createlocations';
         };
     };
-    
-    $outputJSON = json_encode($output);
-    print($outputJSON);
 };
 
 ?>
