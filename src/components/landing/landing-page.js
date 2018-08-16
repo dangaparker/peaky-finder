@@ -48,7 +48,7 @@ class LandingPage extends Component {
 						/>
 						<button
 							type="submit"
-							className="btn is-bg-grey is-primary is-fullwidth is-uppercase is-text-lighter landing-button"
+							className="btn is-bg-grey is-primary is-fullwidth is-text-lighter landing-button"
 						>
 							go
 						</button>

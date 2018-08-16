@@ -138,3 +138,6 @@ btn{
 	text-transform: lowercase;
 }
 
+.landing-button:hover{
+	cursor: pointer;
+}

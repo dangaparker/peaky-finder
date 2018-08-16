@@ -96,6 +96,9 @@ export default class Team extends Component {
                         </p>
                     </div>
                 </div>
+                <div className="shout-out-container">
+                    <p className="shout-out-text">With special thanks to graphic designer, Annabel Parker, and our mentors: Dan Paschal and Cody Miller.</p>
+                </div>
             </div>
         )
     }

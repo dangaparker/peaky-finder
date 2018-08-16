@@ -51,7 +51,7 @@
 }
 
 .navbar ul li:hover {
-	background-color: #acbdb9;
+	background-color: rgb(201, 212, 201);
 }
 
 .navbar ul li a {
@@ -85,7 +85,11 @@
 	width: 2em;
 	box-sizing: border-box;
 	position: relative;
+	cursor: pointer;
 	
+}
+.navbar .back-button{
+	cursor: pointer;	
 }
 
 .navbar .burger-menu span {

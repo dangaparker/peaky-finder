@@ -30,7 +30,7 @@ class Nav extends Component {
 		return (
 			<nav  className = {this.props.location.pathname === "/" ? "navbar is-primary is-text-darker landing-burger" : "navbar is-primary is-text-darker"}>
 				{this.props.location.pathname === "/" ? null : (
-					<i className="material-icons" onClick={this.goBack}>
+					<i className="material-icons back-button" onClick={this.goBack}>
 						arrow_back_ios
 					</i>
 				)}
