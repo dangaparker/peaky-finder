@@ -45,7 +45,11 @@
         display: flex;
         flex-flow: row; 
         padding: .4em;
-	}
+    }
+    .shout-out-text{
+        width: 50%;
+
+    }
 }
 @media only screen and (min-width: 475px) and (max-width: 670px){
     .team{
@@ -56,4 +60,15 @@
     .team{
         padding: 0 8em; 
     }
+    .shout-out-text{
+        width: 50%;
+
+    }
+}
+
+.shout-out-container{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
 }

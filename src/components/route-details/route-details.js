@@ -74,13 +74,13 @@ class RouteDetails extends Component {
 						<p className="description">{description}</p>
 						<div className="btn-group">
 							<button
-								className="btn is-primary is-text-ligther itinerary-toggle itinerary-button top-btn"
+								className="btn is-primary is-text-ligther itinerary-toggle add-itinerary-button top-btn"
 								onClick={this.handleClick}
 							>
 								{this.props.itineraryRoutes.find(route => route.id === this.props.selectedRoute.id) == null ? "add to itinerary" : "remove from itinerary"}
 							</button>
 							<NavLink
-								className="btn bottom-btn"
+								className="btn bottom-btn go-to-itinerary-button"
 								to={`/itinerary?${queryString.stringify({
 									routes: this.props.itineraryRoutes.map(route => route.id)
 								})}`}
