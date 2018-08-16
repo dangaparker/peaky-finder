@@ -66,11 +66,19 @@ input:focus {
 .btn.is-primary {
 	color: #70837f;
 }
+.btn.is-primary:hover {
+	background-color: rgb(201, 212, 201);;
+	cursor: pointer;
+}
 
 .btn.is-secondary {
 	background-color: #e0e7e0;
 	color: #70837f;
 	text-align: center;
+}
+.btn.is-secondary:hover{
+	background-color: rgb(201, 212, 201);;
+	cursor: pointer;
 }
 
 .btn-group {

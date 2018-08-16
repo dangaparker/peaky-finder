@@ -86,9 +86,15 @@
 }
 .add-itinerary-button, .go-to-itinerary-button{
 	background-color: #e0e7e0;
-	color: #70837f
+	color: #70837f;
+	cursor: pointer
 }
-
+.add-itinerary-button:hover, .go-to-itinerary-button:hover{
+	background-color: rgb(201, 212, 201);
+}
+.description{
+	text-align: center
+}
 @media only screen and (min-width: 576px){
 	.go-to-itinerary-button, .add-itinerary-button{
 		width: 60%;
@@ -101,3 +107,24 @@
 	}
 }
 
+@media only screen and (min-width: 576px){
+	.detail-container{
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+}
+
+@media only screen and (min-width: 768px){
+	.detail-container{
+		padding-left: 4em;
+		padding-right: 4em;
+	}
+}
+
+@media only screen and (min-width: 992px){
+	.detail-container{
+		padding-left: 6em;
+		padding-right: 6em;
+	}
+	
+}
