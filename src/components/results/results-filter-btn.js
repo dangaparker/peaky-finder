@@ -40,7 +40,7 @@ class FilterBtn extends Component {
 			<div>
 				<div className="filter">
 					<button
-						className="btn is-secondary is-very-small is-text-lighter"
+						className="btn is-secondary is-very-small is-text-lighter filter-button"
 						type="button"
 						onClick={this.toggle}
 					>

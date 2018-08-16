@@ -4,4 +4,13 @@
     top: 55px;
     right: 5px;
     padding: .2em .4em;
+    
+}
+.filter:hover{
+   
+    cursor: pointer;
+}
+.filter .btn:hover{
+    cursor: pointer;
+    background-color: rgb(171, 197, 171)
 }

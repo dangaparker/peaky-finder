@@ -54,12 +54,19 @@
 	margin: 0;
 }
 
+.routes-modal:hover {
+	cursor: pointer;
+}
+
 .routes-modal ul li {
-	border-bottom: 1px solid rgba(43, 41, 41, 0.3);
+	border-bottom: 1px solid rgba(184, 184, 184, 0.3);
 	box-sizing: border-box;
 	margin: 0.1em 0;
 	padding: .7em 0em;
 	font-size: 1.2em;
+}
+.routes-modal ul li:hover{
+	background-color: rgba(139, 139, 139, 0.11);
 }
 
 .routes-modal ul li:last-child {

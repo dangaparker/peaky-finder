@@ -84,10 +84,15 @@
 	margin-top: 5%;
 	text-align: center;
 }
+.add-itinerary-button, .go-to-itinerary-button{
+	background-color: #e0e7e0;
+	color: #70837f
+}
 
 @media only screen and (min-width: 576px){
-	.bottom-btn, .itinerary-button{
+	.go-to-itinerary-button, .add-itinerary-button{
 		width: 60%;
+		
 }
 	.btn-group{
 		display: flex;
