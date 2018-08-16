@@ -36,7 +36,8 @@ class Nav extends Component {
 				)}
 				
 				{this.props.location.pathname === "/" ? null : (<NavLink to="/">
-					<h1>pf</h1>
+					<h1 className="small-nav-title">pf</h1>
+					<h1 className="large-nav-title">peaky finder</h1>
 				</NavLink>)}
 
 				
