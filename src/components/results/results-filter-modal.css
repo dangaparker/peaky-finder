@@ -79,6 +79,9 @@ input[type="checkbox"] {
 	height: 2em;
 	color: #70837f
 }
+input[type="checkbox"]:hover{
+	cursor: pointer
+}
 
 .drop-menu {
 	display: flex;
@@ -108,5 +111,9 @@ input[type="checkbox"] {
 .input-checkbox {
 	margin-top: 0;
 	color: #70837f
+}
+
+.drop-menu-style:hover{
+	cursor: pointer;
 }
 

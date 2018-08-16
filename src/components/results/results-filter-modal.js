@@ -9,7 +9,7 @@ import filterOptions from "./filterOptions";
 
 const renderCheckBox = ({ label, input, meta: { touched, error }, type }) => {
 	return (
-		<div className="checkbox-container">
+		<div className="checkbox-container checkbox-hover">
 			<input className="" {...input} type={type} autoComplete="off" />
 			<label className="">{label}</label>
 		</div>
@@ -86,7 +86,7 @@ class FilterModal extends Component {
 							</Field>
 						</div>
 						<div className="btn-group">
-							<button type="submit" className="btn is-primary is-small">
+							<button type="submit" className="btn is-secondary is-small">
 								APPLY
 							</button>
 						</div>
