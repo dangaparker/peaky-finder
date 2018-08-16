@@ -18,7 +18,7 @@ class About extends Component {
                 </div>
                 <div className="about-content">
                     <h1 className="about-header">about</h1>
-                    <p className="about-text">peaky finder is an application for west coast climbers to be able to locate and save different routes into an itinerary to map out a day's worth of climbing!</p>
+                    <p className="about-text">peaky finder is an application for west coast rock climbers to be able to locate and save different routes into an itinerary to map out a day's worth of climbing!</p>
                     <h3>Technologies used:</h3>
                     <div className="tech-icons">
                         <div>

@@ -14,6 +14,8 @@
     text-align: center;
     text-transform: lowercase;
     color: #70837f;
+    margin: 1.4em 0;
+    font-size: 1.9em;
 }
 
 .member {
@@ -31,7 +33,6 @@
 
 
 .member>p img {
-    width: 2em;
     padding: .3em;
 }
 
@@ -71,4 +72,11 @@
     display: flex;
     justify-content: center;
     margin-top: 2em;
+}
+
+.linkedin-git-icon{
+    width: 1.6em
+}
+.folder-icon{
+    width: 2em;
 }
