@@ -78,7 +78,7 @@ export default class Team extends Component {
                             <a href='https://www.linkedin.com/in/sarah-chun-347081160/' target="_blank">
                                 <img className="linkedin-git-icon" src={linkedin} alt="" />   
                             </a>
-                            <a href="http://sarahschuncodes.com/" target="_blank">
+                            <a href="">
                                 <img className="folder-icon" src={folder} alt=""/>
                             </a>
                         </p>
