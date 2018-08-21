@@ -16,17 +16,29 @@ class RouteDetails extends Component {
 		super(props);
 
 		this.handleClick = this.handleClick.bind(this);
+		console.log(this.props)
 	}
 
 	async componentDidMount() {
 		this.props.getRouteData();
+		localStorage.setItem('localRouteArray', JSON.stringify([]))
 	}
 
 	handleClick() {
 		//create a cookie or local storage here.
 		const { itineraryRoutes, selectedRoute } = this.props;
+		
 		if (itineraryRoutes.find(route => route.id === selectedRoute.id) == null) {
 			this.props.addToItinerary(this.props.selectedRoute);
+			
+			
+			var parsedRoutes = JSON.parse(localStorage.getItem('localRouteArray'))
+			parsedRoutes.push(selectedRoute)
+			console.log('parsed', parsedRoutes)
+			localStorage.localRouteArray = JSON.stringify(parsedRoutes)
+			// localStorage.setItem('itin', JSON.stringify(selectedRoute))
+			// var localItin = JSON.parse(localStorage.getItem('itin'))
+			// console.log('newitemfromlocal', localItin)
 		} else {
 			this.props.removeFromItinerary(this.props.selectedRoute);
 		}

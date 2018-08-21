@@ -37,7 +37,6 @@ class LandingPage extends Component {
 
 	handleFormSubmit(event) {
 		event.preventDefault();
-		console.log('props', this.props)
 		const { searchTerm } = this.props;
 		if(searchTerm === ""){
 			return;
