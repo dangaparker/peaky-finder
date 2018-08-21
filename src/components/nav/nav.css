@@ -160,3 +160,17 @@
 	
 }
 
+.invisible-nav-show{
+	display: block;
+    position: absolute;
+    width: 65vw;
+    top: 8vh;
+    background-color: transparent;
+    opacity: .5;
+    height: 193vh;
+    left: 0vw;
+}
+
+.invisible-nav-close{
+	display: none;
+}

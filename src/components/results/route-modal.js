@@ -35,7 +35,6 @@ class RouteModal extends Component {
 	}
 
 	render() {
-		console.log('Props dfa', this.props)
 		if (!this.state.loading) {
 			return (
 				<div
