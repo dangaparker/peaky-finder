@@ -141,3 +141,23 @@ btn{
 .landing-button:hover{
 	cursor: pointer;
 }
+
+.landing-button-error{
+	cursor: default;
+	background-color: #dddddd;
+	color: #70837f;
+}
+
+
+.search-error{
+	font-size: 1.3em;
+	background-color: white;
+	color: #70837f;
+	padding: .5em;
+	font-weight: 300;
+	display: flex;
+	align-items: flex-end;
+	text-align: center;
+	font-family: filson;
+	border-color: red
+}
