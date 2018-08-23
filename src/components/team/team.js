@@ -8,7 +8,7 @@ import schun from '../../assets/images/schun.jpg';
 import plujan from '../../assets/images/plujan.jpeg';
 import aghanimati from '../../assets/images/aghanimati.jpg';
 import apark from '../../assets/images/apark.jpg';
-import dparker from '../../assets/images/danphoto.jpg';
+import dparker from '../../assets/images/danparker.jpg';
 import briefcase from '../../assets/images/icons/briefcase-solid.svg'
 import folder from '../../assets/images/icons/folder-open-solid.svg'
 
