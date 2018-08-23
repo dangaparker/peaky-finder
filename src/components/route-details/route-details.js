@@ -14,13 +14,12 @@ import "./route-details.css";
 class RouteDetails extends Component {
 	constructor(props) {
 		super(props);
-
 		this.handleClick = this.handleClick.bind(this);
-		console.log(this.props)
 	}
 
 	async componentDidMount() {
 		this.props.getRouteData();
+		//adding route array to local storage
 		localStorage.setItem('localRouteArray', JSON.stringify([]))
 	}
 
@@ -31,11 +30,14 @@ class RouteDetails extends Component {
 		if (itineraryRoutes.find(route => route.id === selectedRoute.id) == null) {
 			this.props.addToItinerary(this.props.selectedRoute);
 			
-			
+			//pulling the route array from local storage and parsing it into an objoect
 			var parsedRoutes = JSON.parse(localStorage.getItem('localRouteArray'))
+			//pushing the selected route into the route array and then...
 			parsedRoutes.push(selectedRoute)
-			console.log('parsed', parsedRoutes)
+			//thern putting the array back into to local storage
 			localStorage.localRouteArray = JSON.stringify(parsedRoutes)
+			
+			
 			// localStorage.setItem('itin', JSON.stringify(selectedRoute))
 			// var localItin = JSON.parse(localStorage.getItem('itin'))
 			// console.log('newitemfromlocal', localItin)
