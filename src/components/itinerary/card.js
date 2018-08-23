@@ -24,7 +24,9 @@ class Card extends Component {
 	}
 
 	componentDidMount() {
+	
 	}
+
 
 	handleClick() {
 		this.setState({
@@ -38,8 +40,6 @@ class Card extends Component {
 	render() {
 		localStorage.setItem('itinerary', JSON.stringify(this.props.route))
 		var localItin = JSON.parse(localStorage.getItem('itinerary'))
-		console.log('localItinerary', localItin);
-		console.log('localStore', localStorage)
 		let img = this.props.route.image;
 		if (img === '') {
 			img = stockPhoto;
