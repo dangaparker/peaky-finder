@@ -1,15 +1,11 @@
 # c418_climbingapp
 
-Web application for climbers in the Orange County area to find both climbing routes and the nearest campgrounds in order to plan their multi-day excursion in one app.
+Peaky Finder is a user friendly, mobile web application designed for West Coast rock climbers to be able to find and save outdoor climbing routes into an itinerary in order to map out a day's worth of climbing.
 
-## members
+## developers
 - Dan Parker
 - Aaron Park
 - Sarah Chun
 - Amin Ghanimati
 - Paul Lujan
 - Jhon Alino
-
-### mentors
-- Cody
-- Dan
