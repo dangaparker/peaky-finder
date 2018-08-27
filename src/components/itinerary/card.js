@@ -18,9 +18,6 @@ class Card extends Component {
 		};
 		this.handleClick = this.handleClick.bind(this);
 		this.handleXClick = this.handleXClick.bind(this);
-		console.log('my props', props.route)
-		
-	
 	}
 
 	componentDidMount() {

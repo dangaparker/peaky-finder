@@ -161,14 +161,14 @@ class Itinerary extends Component {
     </html>`
 		);
 		await axios.post("/api/mail_handler.php", params);
-
 	};
 
 	componentDidMount() {
-		const { routes } = queryString.parse(this.props.history.location.search);
-		Array.isArray(routes)
-			? this.props.getItenaryRoutes(...routes)
-			: this.props.getItenaryRoutes(routes);
+		//this is to sync the route to redux but it has to be refactored to middleware
+		// const { routes } = queryString.parse(this.props.history.location.search);
+		// Array.isArray(routes)
+		// 	? this.props.getItenaryRoutes(...routes)
+		// 	: this.props.getItenaryRoutes(routes);
 	}
 
 	renderInput({ label, input, meta: { touched, error } }) {
@@ -206,7 +206,6 @@ class Itinerary extends Component {
 
 	render() {
 		const { handleSubmit } = this.props;
-
 		if (!this.props.routes.length) {
 			return (
 				<NoResults text="no itinerary yet" />

@@ -20,7 +20,7 @@ class RouteDetails extends Component {
 	async componentDidMount() {
 		this.props.getRouteData();
 		//adding route array to local storage
-		localStorage.setItem('localRouteArray', JSON.stringify([]))
+		// localStorage.setItem('localRouteArray', JSON.stringify([]))
 	}
 
 	handleClick() {
@@ -31,11 +31,11 @@ class RouteDetails extends Component {
 			this.props.addToItinerary(this.props.selectedRoute);
 			
 			//pulling the route array from local storage and parsing it into an objoect
-			var parsedRoutes = JSON.parse(localStorage.getItem('localRouteArray'))
-			//pushing the selected route into the route array and then...
-			parsedRoutes.push(selectedRoute)
-			//thern putting the array back into to local storage
-			localStorage.localRouteArray = JSON.stringify(parsedRoutes)
+			// var parsedRoutes = JSON.parse(localStorage.getItem('localRouteArray'))
+			// //pushing the selected route into the route array and then...
+			// parsedRoutes.push(selectedRoute)
+			// //thern putting the array back into to local storage
+			// localStorage.localRouteArray = JSON.stringify(parsedRoutes)
 			
 			
 			// localStorage.setItem('itin', JSON.stringify(selectedRoute))
@@ -95,9 +95,10 @@ class RouteDetails extends Component {
 							</button>
 							<NavLink
 								className="btn bottom-btn go-to-itinerary-button"
-								to={`/itinerary?${queryString.stringify({
-									routes: this.props.itineraryRoutes.map(route => route.id)
-								})}`}
+								to={'/itinerary'}
+								// to={`/itinerary?${queryString.stringify({
+								// 	routes: this.props.itineraryRoutes.map(route => route.id)
+								// })}`}
 							>
 								go to itinerary
 							</NavLink>
