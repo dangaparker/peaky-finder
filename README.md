@@ -1,6 +1,7 @@
 # Peaky Finder
 
 Peaky Finder is a user friendly, mobile web application designed for West Coast rock climbers to be able to find and save outdoor climbing routes into an itinerary in order to map out a day's worth of climbing.
+Access [the live demo](http://peakyfinder.com/) for a demonstration.
 
 ## Features 
   - Search location based on city or zip code 
